@@ -1,0 +1,71 @@
+<!-- Menu -->
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="height: 100%;">
+  <div class="app-brand demo">
+    <a href="index.html" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <img src="assets/img/illustrations/logoSinMarca.png" height="30">
+      </span>
+      <span class="app-brand-text demo menu-text fw-bold ms-2">AQdron</span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1">
+
+    <li class="menu-header small text-uppercase" *ngIf="user">
+      <span class="menu-header-text">Administrador</span>
+    </li>
+
+    <li class="menu-item" routerLink="/admin" routerLinkActive="active" *ngIf="user">
+      <a target="_blank" class="menu-link">
+        <i class="menu-icon tf-icons  bx bx-user-pin"></i>
+        <div data-i18n="Chat">Clientes</div>
+      </a>
+
+    </li>
+
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Clientes</span>
+    </li>
+
+    <li class="menu-item" routerLink="/dashboard" routerLinkActive="active">
+      <a class="menu-link">
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div class="text-truncate">Pagina Principal</div>
+      </a>
+    </li>
+
+    <li class="menu-item" routerLink="/records" routerLinkActive="active">
+      <a target="_blank" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div>Registros</div>
+      </a>
+    </li>
+
+    <li class="menu-item" routerLink="/predictions" routerLinkActive="active">
+      <a target="_blank" class="menu-link">
+        <i class="menu-icon tf-icons  bx bx-radar"></i>
+        <div>Predicciones</div>
+      </a>
+    </li>
+
+    <li class="menu-item" routerLink="/maps" routerLinkActive="active">
+      <a target="_blank" class="menu-link">
+        <i class="menu-icon tf-icons  bx bx-map-alt"></i>
+        <div data-i18n="Chat">Mapas</div>
+      </a>
+    </li>
+
+
+  </ul>
+</aside>
+<!-- / Menu -->
+<div class="layout-page">
+  <!-- Navbar -->
+</div>

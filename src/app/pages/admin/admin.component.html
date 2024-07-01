@@ -1,0 +1,396 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+        <app-sidebar></app-sidebar>
+
+        <!-- Layout container -->
+        <div class="layout-page">
+            <!-- Navbar -->
+
+            <p class="center">Ultimo Sensado</p>
+            <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                id="layout-navbar">
+                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                        <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                </div>
+
+                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                    <!-- Search -->
+                    <div class="navbar-nav align-items-center">
+                        <div class="nav-item d-flex align-items-center">
+                            <i class="bx bx-search fs-4 lh-0"></i>
+                            <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2"
+                                placeholder="Buscar..." />
+                        </div>
+                    </div>
+                    <!-- /Search -->
+
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                        <i class="bx bx-map fs-4 lh-0"></i>
+                        <p style="margin-top:1rem; font-size:small"
+                            class="form-control border-0 shadow-none ps-1 ps-sm-2">Yanga, Veracruz México</p>
+
+                        <i class="bx bx-calendar fs-4 lh-0 d-none d-sm-block"></i>
+                        <p style="margin-top:1rem; font-size:small"
+                            class="form-control border-0 shadow-none ps-1 ps-sm-2 d-none d-sm-block">Sabado, 09 de marzo de
+                            2024, 06:17:53 AM</p>
+
+                        <!-- User -->
+                        <app-us-nav></app-us-nav>
+                        <!--/ User -->
+                    </ul>
+                </div>
+            </nav>
+
+
+            <!-- / Navbar -->
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+
+
+                    <h4 class="py-3 mb-4">
+                        <span class="text-muted fw-light">Administrador /</span> Clientes en el Sistema
+                    </h4>
+
+                    <!-- Basic Bootstrap Table -->
+                    <div class="card">
+                        <div class="table-responsive text-nowrap" style="margin: 1rem;">
+                            <div class="semaforo">
+                                <div class="traffic-light">
+                                    <!-- <div class="light blue"></div> -->
+                                    <!-- <div class="left">
+                                        <p>Nuevo</p>
+                                    </div> -->
+                                    <div class="light yellow"></div>
+                                    <div class="left">
+                                        <p>Pendiente</p>
+                                    </div>
+                                    <div class="light green"></div>
+                                    <div class="left">
+                                        <p>Activo</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Telefóno</th>
+                                        <th>Correo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0" *ngFor="let user of usuarios">
+
+                                    <tr>
+                                        <td>
+                                            <ul
+                                                class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                    data-bs-placement="top" class="avatar avatar-xs">
+                                                    <img src="../../assets/img/illustrations/logoConMarca.jpeg"
+                                                        alt="Avatar" class="rounded-circle">
+                                                </li>
+                                                <li style="margin-left:1rem">
+                                                    <span class="fw-medium">
+                                                        {{user.nombre}}
+                                                    </span>
+                                                </li>
+                                            </ul>
+
+                                        </td>
+                                        <td>{{user.apellido_p}} {{user.apellido_m}}</td>
+                                        <td>
+                                            {{user.telefono}}
+                                        </td>
+                                        <td>
+                                            <span class="badge me-1"
+                                                [ngClass]="{'bg-label-success': user.status === 'A', 'bg-label-warning': user.status !== 'A'}">
+                                                {{user.correo}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <i class="menu-icon tf-icons bx bx-show-alt pull-up" data-bs-toggle="modal"
+                                                [attr.data-bs-target]="'#showModal-' + user.id_usuario"></i>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" [id]="'showModal-' + user.id_usuario" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                Información del Cliente</h1>
+                                                            <div class="semaforo">
+                                                                <div class="traffic-light">
+                                                                    <!-- <div class="light blue"></div> -->
+                                                                    <!-- <div class="left">
+                                                                        <p>Nuevo</p>
+                                                                    </div> -->
+                                                                    <div class="light yellow"
+                                                                        *ngIf="user.status == 'P'"></div>
+                                                                    <div class="left" *ngIf="user.status == 'P'">
+                                                                        <p>Pendiente</p>
+                                                                    </div>
+                                                                    <div class="light green" *ngIf="user.status == 'A'">
+                                                                    </div>
+                                                                    <div class="left" *ngIf="user.status == 'A'">
+                                                                        <p>Activo</p>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="user-card">
+                                                                <div class="user-avatar">
+                                                                    <img src="../../assets/img/illustrations/logoConMarca.jpeg"
+                                                                        alt="Avatar">
+                                                                </div>
+                                                                <div class="user-info">
+                                                                    <h2 class="user-name">{{user.usuario}}</h2>
+                                                                    <h4 class="user-details">{{user.nombre}}
+                                                                        {{user.apellido_p}} {{user.apellido_m}}</h4>
+                                                                    <p class="user-details">{{user.rol}}</p>
+                                                                    <p class="user-details">{{user.correo}}</p>
+                                                                    <p class="user-details">{{user.telefono}}</p>
+                                                                    <p class="user-details">{{user.calle}}
+                                                                        {{user.ciudad}},Ver</p>
+                                                                    <p class="user-details">Colonia: {{user.colonia}}
+                                                                    </p>
+                                                                    <p class="user-details">N. exterior:
+                                                                        {{user.numero_externo}} N. Interior:
+                                                                        {{user.numero_interno}}</p>
+                                                                    <p class="user-details">CP: {{user.codigo_postal}}
+                                                                    </p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <i class="menu-icon tf-icons bx bx-edit pull-up" data-bs-toggle="modal"
+                                                [attr.data-bs-target]="'#editModal-' + user.id_usuario"></i>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" [id]="'editModal-' + user.id_usuario" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar
+                                                                Cliente</h1>
+                                                            <div class="semaforo">
+                                                                <div class="traffic-light">
+                                                                    <!-- <div class="light blue"></div> -->
+                                                                    <!-- <div class="left">
+                                                                        <p>Nuevo</p>
+                                                                    </div> -->
+                                                                    <div class="light yellow"
+                                                                        *ngIf="user.status == 'P'"></div>
+                                                                    <div class="left" *ngIf="user.status == 'P'">
+                                                                        <p>Pendiente</p>
+                                                                    </div>
+                                                                    <div class="light green" *ngIf="user.status == 'A'">
+                                                                    </div>
+                                                                    <div class="left" *ngIf="user.status == 'A'">
+                                                                        <p>Activo</p>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <form #f="ngForm" (ngSubmit)="onSubmit(f,user.id_usuario)">
+                                                            <div class="modal-body">
+
+                                                                <div class="user-info">
+                                                                    <label for="usuario">Usuario:</label>
+                                                                    <input type="text" id="usuario"
+                                                                        class="form-control user-name"
+                                                                        [ngModel]="user.usuario" name="usuario">
+
+                                                                    <label for="nombre">Nombre:</label>
+                                                                    <input type="text" id="nombre"
+                                                                        class="form-control user-details"
+                                                                        [ngModel]="user.nombre" name="nombre">
+
+                                                                    <div class="user-details-inputs">
+                                                                        <div>
+                                                                            <label for="apellido_p">Apellido
+                                                                                Paterno:</label>
+                                                                            <input type="text" id="apellido_p"
+                                                                                class="form-control user-details"
+                                                                                [ngModel]="user.apellido_p"
+                                                                                name="apellido_p">
+                                                                        </div>
+
+                                                                        <div style="padding-left: 3rem;">
+                                                                            <label for="apellido_m">Apellido
+                                                                                Materno:</label>
+                                                                            <input type="text" id="apellido_m"
+                                                                                class="form-control user-details"
+                                                                                [ngModel]="user.apellido_m"
+                                                                                name="apellido_m">
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <label for="status">Estado:</label>
+                                                                    <select class="form-select user-details"
+                                                                        [ngModel]="user.status" name="status">
+                                                                        <option value="A">Activo</option>
+                                                                        <option value="P">Pendiente</option>
+                                                                    </select>
+
+                                                                    <label for="correo">Correo:</label>
+                                                                    <input type="text" id="correo"
+                                                                        class="form-control user-details"
+                                                                        [ngModel]="user.correo" name="correo">
+
+                                                                    <label for="telefono">Teléfono:</label>
+                                                                    <input type="text" id="telefono"
+                                                                        class="form-control user-details"
+                                                                        [ngModel]="user.telefono" name="telefono">
+
+                                                                    <label for="ciudad">Ciudad:</label>
+                                                                    <input type="text" id="ciudad"
+                                                                        class="form-control user-details"
+                                                                        [ngModel]="user.ciudad" name="ciudad">
+
+                                                                    <label for="colonia">Colonia:</label>
+                                                                    <input type="text" id="colonia"
+                                                                        class="form-control user-details"
+                                                                        [ngModel]="user.colonia" name="colonia">
+
+
+                                                                    <label for="calle">Calle:</label>
+                                                                    <input type="text" id="calle"
+                                                                        class="form-control user-details"
+                                                                        [ngModel]="user.calle" name="calle">
+
+                                                                    <div class="user-details-inputs">
+                                                                        <div>
+                                                                            <label for="exterior">Número
+                                                                                Exterior:</label>
+                                                                            <input type="text" id="exterior"
+                                                                                class="form-control exterior-input"
+                                                                                [ngModel]="user.numero_externo"
+                                                                                name="numero_externo">
+
+                                                                        </div>
+                                                                        <div style="padding-left:3rem">
+                                                                            <label for="interior">Número
+                                                                                Interior:</label>
+                                                                            <input type="text" id="interior"
+                                                                                class="form-control interior-input"
+                                                                                [ngModel]="user.numero_interno"
+                                                                                name="numero_interno">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <label for="codigoPostal">Código Postal:</label>
+                                                                    <input type="text" id="codigoPostal"
+                                                                        class="form-control user-details"
+                                                                        [ngModel]="user.codigo_postal"
+                                                                        name="codigo_postal">
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                                <button type="submit" data-bs-dismiss="modal"
+                                                                    class="btn btn-primary">Guardar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <i class="menu-icon tf-icons bx bx-trash pull-up" data-bs-toggle="modal"
+                                            [attr.data-bs-target]="'#destroyModal-' + user.id_usuario"></i>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" [id]="'destroyModal-' + user.id_usuario" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Destruir Cliente</h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h4 class="card-title text-danger">¿Estás seguro de eliminar al usuario {{user.usuario}}?</h4>                                                           
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancelar</button>
+                                                            <button type="button" class="btn btn-primary" (click)="destroyUser(user.id_usuario)">Eliminar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/ Basic Bootstrap Table -->
+
+                    <hr class="my-5">
+
+
+
+                </div>
+                <!--/ Responsive Table -->
+
+
+
+                <!-- / Content -->
+
+                <!-- Footer -->
+                <footer class="content-footer footer bg-footer-theme">
+                    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                        <p class="text-primary"> Proyecto Multidisiplinario AQdron </p>
+                        <p>IDGS  e IRIC</p>
+                    </div>
+                </footer>
+                <!-- / Footer -->
+
+                <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+</div>
+
+<!-- <div class="buy-now">
+    <a href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/" target="_blank"
+        class="btn btn-primary btn-buy-now">Agregar Usuario</a>
+</div> -->

@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 600px;
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#telefono-container,
+#submit {
+  display: none;
+}
+
+#container.clicked #telefono-container,
+#container.clicked #submit {
+  display: block;
+}
+
+
+form {
+    position: relative;
+}
+
+.date-input-container {
+    position: relative;
+}
+
+input[type="date"] {
+    border: 2px solid var(--color);
+    font-size: 1.1rem;
+    background-color: #eeeeee;
+    color: #000000;
+    padding: 6px 6px 6px 11px;
+    border-radius: 6px;
+    width: calc(100% - 12px);
+    margin-bottom: 15px;
+}
+
+label {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    pointer-events: none;
+    color: #808080;
+    padding: 0 3px 0 3px;
+    border-radius: 6px;
+    background-color: #eeeeee;
+
+    transition: top 0.3s, font-size 0.3s;
+}
+
+input[type="date"]:focus + label,
+input[type="date"]:valid + label {
+    top: -12px;
+    font-size: 0.8rem;
+}
+
+.calendar-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: black;
+}
+
+.container button{
+    width: calc(100% - 20px);
+    background-color: #3CCB6B;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+
+.container button:hover{
+    border-radius: 20px; 
+    background-color: #29a059; 
+    transform: scale(1.02) translateY(-2px);
+}

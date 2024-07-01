@@ -1,0 +1,173 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+
+    <app-sidebar></app-sidebar>
+
+    <!-- Layout container -->
+    <div class="layout-page">
+      <!-- Navbar -->
+
+      <p class="center">Ultimo Sensado</p>
+      <nav
+        class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+        id="layout-navbar">
+        <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+          <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <i class="bx bx-menu bx-sm"></i>
+          </a>
+        </div>
+
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+          <div class="navbar-nav align-items-center">
+            <div class="nav-item d-flex align-items-center">
+              <i class="bx bx-map fs-4 lh-0"></i>
+              <p style="margin-top:1rem" class="form-control border-0 shadow-none ps-1 ps-sm-2">Yanga, Veracruz
+                México</p>
+            </div>
+          </div>
+
+          <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <div class="nav-item d-flex align-items-center">
+              <i class="bx bx-calendar fs-4 lh-0 d-none d-sm-block"></i>
+              <p style="margin-top:1rem" class="form-control border-0 shadow-none ps-1 ps-sm-2 d-none d-sm-block">
+                Sabado, 09 de marzo de
+                2024, 06:17:53 AM</p>
+            </div>
+            <!-- User -->
+            <app-us-nav></app-us-nav>
+
+            <!--/ User -->
+          </ul>
+        </div>
+      </nav>
+
+      <!-- / Navbar -->
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="row">
+
+
+            <!-- Total Revenue -->
+            <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+              <div class="card">
+                <div class="row row-bordered g-0">
+                  <div class="col-md-8">
+                    <h5 class="card-header m-0 me-2 pb-3">Casificación</h5>
+                    <div style="margin: 2rem;">
+                      <form (ngSubmit)="onSubmit()">
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                            value="CO2 es Malo" [(ngModel)]="seleccion">
+                          <label class="form-check-label" for="flexRadioDefault1">
+                            CO2
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" value="PM2.5 es Bueno"
+                            id="flexRadioDefault2" [(ngModel)]="seleccion">
+                          <label class="form-check-label" for="flexRadioDefault2">
+                            PM2.5
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" value="TVOC es Bueno"
+                            id="flexRadioDefault3" [(ngModel)]="seleccion">
+                          <label class="form-check-label" for="flexRadioDefault3">
+                            TVOC
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" value="O3 es Bueno"
+                            id="flexRadioDefault4" [(ngModel)]="seleccion">
+                          <label class="form-check-label" for="flexRadioDefault4">
+                            O3
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5"
+                            value="CO es Bueno" [(ngModel)]="seleccion">
+                          <label class="form-check-label" for="flexRadioDefault5">
+                            CO
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6"
+                            value="NO2 es Bueno" [(ngModel)]="seleccion">
+                          <label class="form-check-label" for="flexRadioDefault6">
+                            NO2
+                          </label>
+                        </div>
+
+
+
+                      </form>
+
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <div class="dropdown">
+                          <p class="text-danger" style="margin-top:3rem;">{{seleccion}}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+
+
+                      
+          </div>
+          <div class="row">
+
+
+          </div>
+        </div>
+        <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-medium">ThemeSelection</a>
+                </div>
+                <div class="d-none d-lg-inline-block">
+                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                  <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
+                    target="_blank" class="footer-link me-4">Documentation</a>
+
+                  <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
+                    class="footer-link">Support</a>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
